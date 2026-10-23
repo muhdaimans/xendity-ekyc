@@ -1,0 +1,44 @@
+{
+    "success": true,
+    "data": {
+        "api_key": "ApiKey0123456789abcdefghijklmnop",
+        "package_name": "Xendity",
+        "ref_id": "XDYORDER-1",
+        "mode ": 1,
+        "onboarding_id": "onb_123",
+        "request_time": "2026-10-23 10:00:00",
+        "signature": "stored-signature",
+        "status": 2,
+        "result": 1,
+        "reject_message": "EKYC onboarding process successful",
+        "step1": {
+            "status": true,
+            "ocr_result": {
+                "full_name": "ALI BIN ABU",
+                "front_document_number": "900101-01-5555",
+                "address": "JALAN 1, KUALA LUMPUR",
+                "gender": "MALE",
+                "back_document_number": "900101-01-5555-03-01"
+            },
+            "text_similarity_result": {
+                "name_similarity_status": true,
+                "document_number_similarity_status": true,
+                "front_back_number_similarity_status": true
+            },
+            "landmark_status": {
+                "landmark_is_valid": true,
+                "labelcheck_result": true,
+                "materialcheck_result": true
+            },
+            "attempt": 2,
+            "updated_at": 15913221
+        },
+        "step2": {
+            "status": true,
+            "is_identical": true,
+            "percentage": "80.99",
+            "attempt": 2,
+            "updated_at": 15913221
+        }
+    }
+}

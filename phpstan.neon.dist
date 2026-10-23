@@ -1,0 +1,11 @@
+parameters:
+    level: 7
+    paths:
+        - src
+        - config
+        - database
+        - routes
+        - workbench/app/Models
+    configDirectories:
+        - config
+    tmpDir: build/phpstan

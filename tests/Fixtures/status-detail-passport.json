@@ -1,0 +1,43 @@
+{
+    "success": true,
+    "data": {
+        "api_key": "ApiKey0123456789abcdefghijklmnop",
+        "package_name": "Xendity",
+        "ref_id": "XDYORDER-1",
+        "onboarding_id": "onb_123",
+        "request_time": "2026-10-23 10:00:00",
+        "mode ": 2,
+        "signature": "stored-signature",
+        "status": 2,
+        "result": 0,
+        "reject_message": "Step 2 failed",
+        "step1": {
+            "status": true,
+            "front_document_image": "base64string",
+            "face_image": "base64string",
+            "ocr_result": {
+                "full_name": "JOHN DOE",
+                "front_document_number": "A12345678",
+                "gender": "MALE",
+                "date_of_birth": "1995-05-17",
+                "date_of_expiry": "2030-02-25",
+                "nationality ": "SGP"
+            },
+            "text_similarity_result": {
+                "name_similarity_status": true,
+                "document_number_similarity_status": true
+            },
+            "attempt": 1,
+            "updated_at": 15913221
+        },
+        "step2": {
+            "status": true,
+            "step2_result": "FAIL",
+            "is_identical": false,
+            "percentage": "41.5",
+            "best_frame": "base64string",
+            "attempt": 3,
+            "updated_at": 15913221
+        }
+    }
+}

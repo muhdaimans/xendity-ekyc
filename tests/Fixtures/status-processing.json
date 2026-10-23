@@ -1,0 +1,16 @@
+{
+    "success": true,
+    "data": {
+        "ref_id": "XDYORDER-1",
+        "onboarding_id": "onb_123",
+        "mode": 1,
+        "signature": "stored-signature",
+        "status": 1,
+        "step1": {
+            "status": false
+        },
+        "step2": {
+            "status": false
+        }
+    }
+}
