@@ -3,9 +3,11 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
 use XendityEkyc\XendityEkyc\Facades\XendityEkyc as XendityEkycFacade;
 use XendityEkyc\XendityEkyc\Gateway;
 use XendityEkyc\XendityEkyc\XendityEkyc;
+use XendityEkyc\XendityEkyc\XendityEkycServiceProvider;
 
 it('registers the services as singletons', function () {
     expect(app(XendityEkyc::class))->toBe(app(XendityEkyc::class))
@@ -25,12 +27,13 @@ it('registers the webhook route', function () {
 });
 
 it('publishes the config and migrations', function () {
-    $this->artisan('vendor:publish', ['--tag' => 'xendity-ekyc-config', '--force' => true])->assertSuccessful();
-    $this->artisan('vendor:publish', ['--tag' => 'xendity-ekyc-migrations'])->assertSuccessful();
+    $config = ServiceProvider::pathsToPublish(XendityEkycServiceProvider::class, 'xendity-ekyc-config');
+    $migrations = ServiceProvider::pathsToPublish(XendityEkycServiceProvider::class, 'xendity-ekyc-migrations');
 
-    expect(config_path('xendity-ekyc.php'))->toBeFile()
-        ->and(glob(database_path('migrations/*_create_xendity_ekyc_transactions_table.php')))->not->toBeEmpty();
-
-    @unlink(config_path('xendity-ekyc.php'));
-    array_map(unlink(...), glob(database_path('migrations/*_create_xendity_ekyc_transactions_table.php')) ?: []);
+    expect($config)->toHaveCount(1)
+        ->and(array_key_first($config))->toEndWith('config/xendity-ekyc.php')
+        ->and(reset($config))->toBe(config_path('xendity-ekyc.php'))
+        ->and($migrations)->toHaveCount(1)
+        ->and(glob(array_key_first($migrations).'/*_create_xendity_ekyc_transactions_table.php'))->toHaveCount(1)
+        ->and(ServiceProvider::pathsToPublish(XendityEkycServiceProvider::class, 'xendity-ekyc'))->toHaveCount(2);
 });
