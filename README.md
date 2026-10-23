@@ -137,6 +137,13 @@ Gateway errors throw `XendityEkyc\XendityEkyc\Exceptions\ApiException`. Its `err
 php artisan xendity-ekyc:status {ref_id|onboarding_id} [--onboarding-id=]
 ```
 
+To test your `TransactionUpdated` listeners without completing a real onboarding, mark a stored transaction as completed with a successful or failed result. The gateway is not called, and the command refuses to run in production:
+
+```bash
+php artisan xendity-ekyc:simulate {ref_id|onboarding_id} success
+php artisan xendity-ekyc:simulate {ref_id|onboarding_id} failed [--message="Face mismatch"]
+```
+
 ### WebViews
 
 Xendity supports Safari and Chrome on iOS, and Chrome on Android. When opening the onboarding URL inside a WebView, set its user agent to Chrome.

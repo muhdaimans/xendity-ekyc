@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace XendityEkyc\XendityEkyc;
 
 use Illuminate\Support\ServiceProvider;
+use XendityEkyc\XendityEkyc\Console\Commands\SimulateCommand;
 use XendityEkyc\XendityEkyc\Console\Commands\StatusCommand;
 
 class XendityEkycServiceProvider extends ServiceProvider
@@ -41,6 +42,7 @@ class XendityEkycServiceProvider extends ServiceProvider
         ], ['xendity-ekyc', 'xendity-ekyc-migrations']);
 
         $this->commands([
+            SimulateCommand::class,
             StatusCommand::class,
         ]);
     }
