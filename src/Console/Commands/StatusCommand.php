@@ -28,12 +28,12 @@ class StatusCommand extends Command
      */
     public function handle(XendityEkyc $ekyc): int
     {
-        $reference = $this->argument('reference');
+        $reference = $this->input->getArgument('reference');
 
         if (! is_string($reference)) {
             return self::INVALID;
         }
-        $onboardingId = $this->option('onboarding-id');
+        $onboardingId = $this->input->getOption('onboarding-id');
 
         try {
             $transaction = XendityEkyc::transactions()
